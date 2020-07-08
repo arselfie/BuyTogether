@@ -15,6 +15,9 @@ public class User {
     @Column(name = "USER_ID")
     private Long id;
 
+    @OneToMany(mappedBy = "customer")
+    private List <Address> addresses;
+
     @Column(name = "NAME", nullable = false)
     private String name;
 

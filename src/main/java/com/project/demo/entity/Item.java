@@ -25,7 +25,7 @@ public class Item {
     private ItemStatus itemStatus;
 
     @ManyToOne
-    @JoinColumn(name = "ORDER_ID")
+    @JoinColumn(name = "ORDER_ID",nullable = false)
     private Order order;
 
 }
