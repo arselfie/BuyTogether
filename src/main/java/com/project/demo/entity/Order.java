@@ -35,5 +35,8 @@ public class Order {
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
+    @Column(name = "RATING")
+    private Integer rating;
+
 
 }
