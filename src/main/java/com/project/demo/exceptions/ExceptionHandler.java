@@ -16,6 +16,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         errorResponse.setDate(new Date());
         errorResponse.setStatus(400);
         errorResponse.setMessageError(validationException.getMessage());
+        errorResponse.setErrors(validationException.getErrors());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 

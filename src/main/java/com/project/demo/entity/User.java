@@ -3,6 +3,9 @@ package com.project.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -18,15 +21,19 @@ public class User {
     @OneToMany(mappedBy = "customer")
     private List <Address> addresses;
 
+    @NotBlank
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @NotBlank(message = "Login is blank")
     @Column(name = "LOGIN", nullable = false, unique = true)
     private String login;
 
+    @NotBlank(message = "Password is blank")
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
+    @Email
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
@@ -34,6 +41,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private EntityStatus entityStatus;
 
+    @NotNull(message = "User type is null")
     @Column(name = "TYPE", nullable = false)
     @Enumerated(EnumType.STRING)
     private UserType userType;
@@ -43,9 +51,6 @@ public class User {
 
     @OneToMany(mappedBy = "customer")
     private List<Order> customerList;
-
-
-
 
 
 

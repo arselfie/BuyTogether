@@ -4,6 +4,7 @@ package com.project.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -31,6 +32,7 @@ public class Order {
     @Column(name = "ORDER_STATUS", nullable = false)
     private OrderStatus orderStatus;
 
+    @NotNull(message = "Order's address is null")
     @ManyToOne
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
