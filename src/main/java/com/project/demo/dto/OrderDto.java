@@ -1,12 +1,11 @@
 package com.project.demo.dto;
 
-import com.project.demo.entity.Address;
-import com.project.demo.entity.Item;
-import com.project.demo.entity.OrderStatus;
-import com.project.demo.entity.User;
+import com.project.demo.entity.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class OrderDto {
@@ -24,5 +23,42 @@ public class OrderDto {
     private AddressDto address;
 
     private Integer rating;
+
+    public OrderDto(Order order) {
+
+        if (order.getCourier() != null) {
+
+            this.courier = new UserDto(order.getCourier());
+
+        }
+
+        this.id = order.getId();
+        this.customer = new UserDto(order.getCustomer());
+        this.courier = new UserDto(order.getCourier());
+        this.itemList = order.getItemList().stream().map(ItemDto::new).collect(Collectors.toList());
+        this.orderStatus = order.getOrderStatus();
+        this.address = new AddressDto(order.getAddress());
+        this.rating = order.getRating();
+    }
+
+    public Order toEntity() {
+        Order order = new Order();
+
+        if (courier != null) {
+
+            order.setCourier(courier.toEntity());
+        }
+
+        order.setId(id);
+        order.setCustomer(customer.toEntity());
+        order.setItemList(itemList.stream().map(ItemDto::toEntity).collect(Collectors.toList()));
+        order.setOrderStatus(orderStatus);
+        order.setAddress(address.toEntity());
+        order.setRating(rating);
+
+
+        return order;
+
+    }
 
 }
