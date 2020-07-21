@@ -6,25 +6,31 @@ import com.project.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/v1/users")
-public class UserController {
+@RequestMapping(value = "/api/v1/auth")
+public class AuthController extends ControllerAncestor {
 
     @Autowired
     private UserService userService;
 
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    @PostMapping(value = "/registration")
+    public ResponseEntity<UserDto> registration(@RequestBody UserDto userDto) {
         User user = userDto.toEntity();
         user = userService.createUser(user);
-        UserDto userDto1=new UserDto(user);
+        UserDto userDto1 = new UserDto(user);
 
         return new ResponseEntity<UserDto>(userDto1, HttpStatus.OK);
-
     }
+
+
+    @GetMapping(value = "/test")
+    public ResponseEntity<String> test() {
+
+        return new ResponseEntity<>("Test is done", HttpStatus.OK);
+    }
+
 
 
 }

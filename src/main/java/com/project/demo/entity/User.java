@@ -1,17 +1,51 @@
 package com.project.demo.entity;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "BT_USER")
-public class User {
+public class User implements UserDetails {
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public String getUsername() {
+        return getUsername();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return entityStatus == EntityStatus.ACTIVE;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return entityStatus == EntityStatus.ACTIVE;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return entityStatus == EntityStatus.ACTIVE;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return entityStatus == EntityStatus.ACTIVE;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +53,7 @@ public class User {
     private Long id;
 
     @OneToMany(mappedBy = "customer")
-    private List <Address> addresses;
+    private List<Address> addresses;
 
     @NotBlank
     @Column(name = "NAME", nullable = false)
@@ -51,7 +85,6 @@ public class User {
 
     @OneToMany(mappedBy = "customer")
     private List<Order> customerList;
-
 
 
 }

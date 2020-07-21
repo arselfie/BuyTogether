@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 @Data
 public class UserDto {
 
+    public UserDto() {
+    }
+
     private Long id;
 
     private List<AddressDto> addresses;
