@@ -1,8 +1,10 @@
 package com.project.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.project.demo.entity.item.Item;
 import com.project.demo.entity.item.ItemStatus;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemDto {
 
     private Long id;

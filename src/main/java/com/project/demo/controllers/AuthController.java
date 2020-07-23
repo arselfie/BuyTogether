@@ -19,9 +19,9 @@ public class AuthController extends ControllerAncestor {
     public ResponseEntity<UserDto> registration(@RequestBody UserDto userDto) {
         User user = userDto.toEntity();
         user = userService.createUser(user);
-        UserDto userDto1 = new UserDto(user);
+        UserDto response = new UserDto(user);
 
-        return new ResponseEntity<UserDto>(userDto1, HttpStatus.OK);
+        return new ResponseEntity<UserDto>(response, HttpStatus.OK);
     }
 
 

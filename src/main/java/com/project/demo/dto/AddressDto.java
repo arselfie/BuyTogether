@@ -1,9 +1,11 @@
 package com.project.demo.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.project.demo.entity.address.Address;
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AddressDto {
 
 

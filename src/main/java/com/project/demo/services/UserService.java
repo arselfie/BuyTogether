@@ -18,11 +18,10 @@ public class UserService {
     @Autowired
     private CommonService commonService;
 
-
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Autowired
     private UserRepository userRepository;
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @PostConstruct
     public void init(){
