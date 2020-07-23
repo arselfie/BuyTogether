@@ -1,5 +1,7 @@
-package com.project.demo.entity;
+package com.project.demo.entity.address;
 
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.user.User;
 import lombok.Data;
 
 import javax.persistence.*;

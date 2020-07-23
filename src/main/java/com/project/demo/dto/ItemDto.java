@@ -1,9 +1,7 @@
 package com.project.demo.dto;
 
-import com.project.demo.entity.Address;
-import com.project.demo.entity.Item;
-import com.project.demo.entity.ItemStatus;
-import com.project.demo.entity.Order;
+import com.project.demo.entity.item.Item;
+import com.project.demo.entity.item.ItemStatus;
 
 public class ItemDto {
 

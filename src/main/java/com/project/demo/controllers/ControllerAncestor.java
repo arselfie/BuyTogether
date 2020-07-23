@@ -1,6 +1,6 @@
 package com.project.demo.controllers;
 
-import com.project.demo.entity.User;
+import com.project.demo.entity.user.User;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.security.JwtTokenProvider;
 import com.project.demo.services.UserService;

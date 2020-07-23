@@ -1,7 +1,6 @@
 package com.project.demo.services;
 
-import com.project.demo.entity.Address;
-import com.project.demo.entity.Item;
+import com.project.demo.entity.item.Item;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;

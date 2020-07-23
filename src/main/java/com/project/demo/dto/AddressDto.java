@@ -1,6 +1,6 @@
 package com.project.demo.dto;
 
-import com.project.demo.entity.Address;
+import com.project.demo.entity.address.Address;
 import lombok.Data;
 
 @Data

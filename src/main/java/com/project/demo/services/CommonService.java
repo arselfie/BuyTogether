@@ -31,4 +31,22 @@ public class CommonService {
         }
     }
 
+    public static <E> boolean objectIn(E object, E... collection){
+        if (object == null){
+            throw new IllegalArgumentException("Object is null");
+        }
+        if (collection == null){
+            return false;
+        }
+        if (collection.length == 0){
+            return false;
+        }
+        for (E obj : collection){
+            if (obj != null && obj.equals(object)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

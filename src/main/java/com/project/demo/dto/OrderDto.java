@@ -1,7 +1,7 @@
 package com.project.demo.dto;
 
-import com.project.demo.entity.*;
-import lombok.Builder;
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.order.OrderStatus;
 import lombok.Data;
 
 import java.util.List;

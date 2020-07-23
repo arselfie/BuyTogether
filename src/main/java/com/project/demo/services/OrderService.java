@@ -1,9 +1,15 @@
 package com.project.demo.services;
 
 import com.project.demo.entity.*;
+import com.project.demo.entity.address.Address;
+import com.project.demo.entity.item.Item;
+import com.project.demo.entity.item.ItemStatus;
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.order.OrderStatus;
+import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserType;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.repository.OrderRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -98,7 +104,7 @@ public class OrderService {
         order= orderRepository.save(order);
 
         for (Item item : order.getItemList()) {
-            item.setItemStatus(ItemStatus.NEW);
+            item.setItemStatus(ItemStatus.NEW_ITEM);
             item.setOrder(order);
             itemService.createItem(item);
         }

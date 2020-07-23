@@ -1,6 +1,9 @@
 package com.project.demo.dto;
 
 import com.project.demo.entity.*;
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserType;
 import lombok.Data;
 
 import java.util.List;

@@ -1,6 +1,12 @@
 package com.project.demo;
 
-import com.project.demo.entity.*;
+import com.project.demo.entity.address.Address;
+import com.project.demo.entity.item.Item;
+import com.project.demo.entity.item.ItemStatus;
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.order.OrderStatus;
+import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +15,7 @@ public class EntityGenerator {
 
     public static Item generateItem() {
         Item item = new Item();
-        item.setItemStatus(ItemStatus.NEW);
+        item.setItemStatus(ItemStatus.NEW_ITEM);
         item.setDescription("Apple");
         item.setName("Phone");
 

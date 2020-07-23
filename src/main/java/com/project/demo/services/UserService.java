@@ -1,8 +1,8 @@
 package com.project.demo.services;
 
 import com.project.demo.entity.EntityStatus;
-import com.project.demo.entity.Order;
-import com.project.demo.entity.User;
+import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserStatus;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -52,11 +51,13 @@ public class UserService {
         if (user == null) {
             throw new ValidationException("User is null");
         }
-        user.setEntityStatus(EntityStatus.NEW);
+        user.setEntityStatus(EntityStatus.ACTIVE);
+        user.setUserStatus(UserStatus.NEW);
+
         commonService.validate(user);
+
         String hashPassword=bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPassword);
-
 
         return userRepository.save(user);
     }

@@ -1,8 +1,7 @@
 package com.project.demo.services;
 
-import com.project.demo.entity.Address;
-import com.project.demo.entity.Item;
-import com.project.demo.entity.User;
+import com.project.demo.entity.address.Address;
+import com.project.demo.entity.user.User;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.repository.AddressRepository;
 import com.project.demo.repository.UserRepository;

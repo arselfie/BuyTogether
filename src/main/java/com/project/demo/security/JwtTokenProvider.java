@@ -1,6 +1,5 @@
 package com.project.demo.security;
 
-import com.project.demo.entity.User;
 import com.project.demo.exceptions.ValidationException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
