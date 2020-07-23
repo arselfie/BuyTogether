@@ -168,5 +168,10 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="00004" author="maks">
+        <dropColumn tableName="BT_USER">
+            <column name="STATUS"/>
+        </dropColumn>
+    </changeSet>
 
 </databaseChangeLog>

@@ -8,7 +8,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
-public abstract class EntityAncestor {
+@MappedSuperclass
+public class EntityAncestor {
 
     @PrePersist
     public void prePersist() {
@@ -21,8 +22,6 @@ public abstract class EntityAncestor {
     @Column(name = "CREATED_AT")
     protected Date created;
 
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UPDATED_AT")
     protected Date updated;
 

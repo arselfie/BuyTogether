@@ -32,6 +32,7 @@ class AuthControllerTest {
         userDto.setLogin("Ars");
         userDto.setName("Arsen");
         userDto.setPassword("12345");
+        userDto.setEmail("123@test.test");
         userDto.setUserType(UserType.CUSTOMER);
 
         String content = objectMapper.writeValueAsString(userDto);

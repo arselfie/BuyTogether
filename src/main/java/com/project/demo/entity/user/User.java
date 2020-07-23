@@ -43,6 +43,7 @@ public class User extends EntityAncestor implements UserDetails {
     private String password;
 
     @Email
+    @NotBlank(message = "Email is blank")
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
