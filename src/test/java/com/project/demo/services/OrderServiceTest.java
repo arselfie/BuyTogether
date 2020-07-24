@@ -79,7 +79,7 @@ class OrderServiceTest {
 
         ValidationException exception = assertThrows(ValidationException.class, () -> orderService.createOrder(testOrder));
 
-        assertEquals("Customer not found", exception.getMessage());
+        assertEquals("Customer is null", exception.getMessage());
     }
 
 

@@ -108,11 +108,7 @@
             <version>2.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
 
     </dependencies>
 
@@ -166,33 +162,45 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
     <profiles>
-
         <profile>
             <id>dev</id>
-            <properties>
-                <activatedProperties>dev</activatedProperties>
-            </properties>
             <dependencies>
-
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
             </dependencies>
         </profile>
 
         <profile>
             <id>prod</id>
-            <activation><activeByDefault>
-                true
-            </activeByDefault></activation>
-            <properties>
-                <activatedProperties>prod</activatedProperties>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
+            <build>
+                <filters>
+                    <filter>src/main/resources/application.properties</filter>
+                </filters>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/</directory>
+                        <excludes>
+                            <exclude>application.properties</exclude>
+                        </excludes>
+                    </resource>
+                    <resource>
+                        <directory>src/environment/prod/resources/</directory>
+                    </resource>
+                </resources>
+            </build>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
             <dependencies>
-                <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
