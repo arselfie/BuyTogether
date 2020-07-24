@@ -1,5 +1,6 @@
 package com.project.demo.entity.address;
 
+import com.project.demo.entity.EntityAncestor;
 import com.project.demo.entity.order.Order;
 import com.project.demo.entity.user.User;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "BT_ADDRESS")
-public class Address {
+public class Address extends EntityAncestor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
