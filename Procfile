@@ -1,0 +1,1 @@
+web: java -jar target/buytogether-1.0.jar
