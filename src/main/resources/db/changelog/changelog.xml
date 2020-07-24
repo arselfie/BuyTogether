@@ -82,11 +82,11 @@
     </changeSet>
 
     <changeSet id="00002" author="maks">
-       <addForeignKeyConstraint baseTableName="BT_ADDRESS"
-                                baseColumnNames="USER_ID"
-                                constraintName="FK_ADDRESS_USER"
-                                referencedTableName="BT_USER"
-                                referencedColumnNames="USER_ID"/>
+        <addForeignKeyConstraint baseTableName="BT_ADDRESS"
+                                 baseColumnNames="USER_ID"
+                                 constraintName="FK_ADDRESS_USER"
+                                 referencedTableName="BT_USER"
+                                 referencedColumnNames="USER_ID"/>
 
         <addForeignKeyConstraint baseTableName="BT_ITEM"
                                  baseColumnNames="ORDER_ID"
@@ -115,5 +115,63 @@
 
     </changeSet>
 
+    <changeSet id="00003" author="maks">
+        <addColumn tableName="BT_ADDRESS">
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="datetime">
+
+            </column>
+            <column name="ENTITY_STATUS" type="varchar(35)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="BT_ITEM">
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="datetime">
+
+            </column>
+            <column name="ENTITY_STATUS" type="varchar(35)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="BT_ORDER">
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="datetime">
+
+            </column>
+            <column name="ENTITY_STATUS" type="varchar(35)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <addColumn tableName="BT_USER">
+            <column name="CREATED_AT" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="datetime">
+
+            </column>
+            <column name="ENTITY_STATUS" type="varchar(35)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_STATUS" type="varchar(35)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="00004" author="maks">
+        <dropColumn tableName="BT_USER">
+            <column name="STATUS"/>
+        </dropColumn>
+    </changeSet>
 
 </databaseChangeLog>

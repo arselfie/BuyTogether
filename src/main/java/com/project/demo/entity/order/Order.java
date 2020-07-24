@@ -1,6 +1,10 @@
-package com.project.demo.entity;
+package com.project.demo.entity.order;
 
 
+import com.project.demo.entity.EntityAncestor;
+import com.project.demo.entity.address.Address;
+import com.project.demo.entity.item.Item;
+import com.project.demo.entity.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,7 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "BT_ORDER")
-public class Order {
+public class Order extends EntityAncestor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

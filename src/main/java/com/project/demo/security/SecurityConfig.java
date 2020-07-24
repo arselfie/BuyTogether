@@ -13,9 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private JwtConfigurer jwtConfigurer;
 
-    private static final String APIv1 = "/api/v1/**";
+    private static final String API_V1 = "/api/v1/**";
 
     private static final String AUTH_ENDPOINT = "/api/v1/auth/**";
 
@@ -31,11 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(APIv1).authenticated()
                 .antMatchers(AUTH_ENDPOINT).permitAll()
-//                .anyRequest().denyAll()
+                .antMatchers(API_V1).authenticated()
+                .anyRequest().denyAll()
                 .and()
-                .apply(new JwtConfigurer());
+                .apply(jwtConfigurer);
+        http.csrf().disable();
     }
 
 

@@ -1,5 +1,7 @@
-package com.project.demo.entity;
+package com.project.demo.entity.item;
 
+import com.project.demo.entity.EntityAncestor;
+import com.project.demo.entity.order.Order;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,7 +9,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "BT_ITEM")
-public class Item {
+public class Item extends EntityAncestor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

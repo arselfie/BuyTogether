@@ -1,7 +1,7 @@
 package com.project.demo.controllers;
 
 import com.project.demo.dto.UserDto;
-import com.project.demo.entity.User;
+import com.project.demo.entity.user.User;
 import com.project.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,9 +19,9 @@ public class AuthController extends ControllerAncestor {
     public ResponseEntity<UserDto> registration(@RequestBody UserDto userDto) {
         User user = userDto.toEntity();
         user = userService.createUser(user);
-        UserDto userDto1 = new UserDto(user);
+        UserDto response = new UserDto(user);
 
-        return new ResponseEntity<UserDto>(userDto1, HttpStatus.OK);
+        return new ResponseEntity<UserDto>(response, HttpStatus.OK);
     }
 
 

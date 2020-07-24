@@ -1,12 +1,11 @@
 package com.project.demo.security;
 
-import com.project.demo.entity.User;
+import com.project.demo.entity.user.User;
 import com.project.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

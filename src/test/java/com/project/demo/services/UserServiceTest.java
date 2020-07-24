@@ -1,14 +1,11 @@
 package com.project.demo.services;
 
-import com.project.demo.entity.User;
-import com.project.demo.entity.UserType;
+import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserType;
 import com.project.demo.exceptions.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,6 +2,11 @@ package com.project.demo.services;
 
 import com.project.demo.EntityGenerator;
 import com.project.demo.entity.*;
+import com.project.demo.entity.address.Address;
+import com.project.demo.entity.item.Item;
+import com.project.demo.entity.order.Order;
+import com.project.demo.entity.order.OrderStatus;
+import com.project.demo.entity.user.User;
 import com.project.demo.exceptions.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

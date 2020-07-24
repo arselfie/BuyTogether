@@ -1,4 +1,4 @@
-package com.project.demo.entity;
+package com.project.demo.entity.user;
 
 public enum UserType {
     CUSTOMER,
