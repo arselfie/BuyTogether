@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class UserServiceTest {
+
+class UserServiceTest extends ServiceTestAncestor {
 
     @Autowired
     private UserService userService;
@@ -43,7 +43,7 @@ class UserServiceTest {
     void createUser() {
     User testUser= new User();
     testUser.setName("Arsen");
-    testUser.setLogin("Ars");
+    testUser.setLogin("Ars1");
     testUser.setPassword("123");
     testUser.setEmail("ars@upce.cz");
     testUser.setUserType(UserType.CUSTOMER);

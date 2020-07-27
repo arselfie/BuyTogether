@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-class AuthControllerTest extends ControllerTest {
+class AuthControllerTest extends ControllerTest  {
 
     private final FieldDescriptor[] REGISTRATION_REQUEST = new FieldDescriptor[]{
             fieldWithPath("login").description("Login").type(JsonFieldType.STRING),
