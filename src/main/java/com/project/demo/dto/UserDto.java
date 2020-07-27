@@ -35,6 +35,8 @@ public class UserDto {
 
     private List<Order> orderList;
 
+    private String token;
+
     public UserDto(User user) {
         this.id = user.getId();
         if (user.getAddresses() != null){
