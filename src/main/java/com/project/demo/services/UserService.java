@@ -1,13 +1,14 @@
 package com.project.demo.services;
 
 import com.project.demo.entity.EntityStatus;
+import com.project.demo.entity.token.TokenType;
 import com.project.demo.entity.user.User;
 import com.project.demo.entity.user.UserStatus;
 import com.project.demo.exceptions.ValidationException;
 import com.project.demo.repository.UserRepository;
 import com.project.demo.security.JwtTokenProvider;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -106,8 +107,16 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void activateUser(String userName) {
-        User user = userRepository.findByLogin(userName);
+    public String generateActivationToken(User user) {
+        return jwtTokenProvider.createToken(user.getLogin(), TokenType.USER_ACTIVATION);
+    }
+
+    public void activateUser(String token) {
+        Pair<String, TokenType> tokenPair = jwtTokenProvider.getLogin(token);
+        User user = userRepository.findByLogin(tokenPair.getFirst());
+        if (tokenPair.getSecond() != TokenType.USER_ACTIVATION) {
+            throw new ValidationException("Wrong token type");
+        }
         if (user == null) {
             throw new ValidationException("User not found in DB by login");
         }
@@ -126,20 +135,22 @@ public class UserService {
 
     public String login(String username, String password) {
 
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(username, password);
-
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
         authenticationManager.authenticate(authenticationToken);
 
         User user = findByLogin(username);
-
         if (user == null) {
             throw new ValidationException("User not found");
         }
+        if (user.getEntityStatus() == EntityStatus.DELETED) {
+            throw new ValidationException("User was deleted from DB");
+        }
 
-        String token = jwtTokenProvider.createToken(username);
+        if (user.getUserStatus() != UserStatus.ACTIVE) {
+            throw new ValidationException("User not active");
+        }
 
-        return token;
+        return jwtTokenProvider.createToken(username, TokenType.USER_AUTHENTICATION);
     }
 
 

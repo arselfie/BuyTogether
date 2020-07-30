@@ -24,7 +24,7 @@ public class ControllerAncestor {
             throw new ValidationException("Token is null");
         }
 
-        String username = jwtTokenProvider.getUserName(token);
+        String username = jwtTokenProvider.getAuthentication(token).getPrincipal().toString();
 
         if (username == null) {
             throw new ValidationException("Username is null");

@@ -23,9 +23,9 @@ public class UserController extends ControllerAncestor {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/activation/{username}")
-    public ResponseEntity<?> activateUser(@PathVariable String username) {
-        userService.activateUser(username);
+    @GetMapping(value = "/activation/{token}")
+    public ResponseEntity<?> activateUser(@PathVariable String token) {
+        userService.activateUser(token);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
