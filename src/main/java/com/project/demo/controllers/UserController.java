@@ -16,19 +16,11 @@ public class UserController extends ControllerAncestor {
     private UserService userService;
 
     @PostMapping(value = "/registration")
-    public ResponseEntity<UserDto> registration(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> registration(@RequestBody UserDto userDto) {
         User user = userDto.toEntity();
-        user = userService.createUser(user);
-        UserDto response = new UserDto(user);
+        userService.createUser(user);
 
-        return new ResponseEntity<UserDto>(response, HttpStatus.OK);
-    }
-
-
-    @GetMapping(value = "/test")
-    public ResponseEntity<String> test() {
-
-        return new ResponseEntity<>("Test is done", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/activation/{username}")
@@ -39,11 +31,8 @@ public class UserController extends ControllerAncestor {
 
     @PostMapping(value = "/login")
     public ResponseEntity<UserDto> login(@RequestBody UserDto userDto) {
-
         String token = userService.login(userDto.getLogin(), userDto.getPassword());
-
         UserDto response = new UserDto();
-
         response.setToken(token);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

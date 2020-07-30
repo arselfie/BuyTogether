@@ -27,13 +27,6 @@ public class OrderDto {
     private Integer rating;
 
     public OrderDto(Order order) {
-
-        if (order.getCourier() != null) {
-
-            this.courier = new UserDto(order.getCourier());
-
-        }
-
         this.id = order.getId();
         this.customer = new UserDto(order.getCustomer());
         this.courier = new UserDto(order.getCourier());
@@ -41,26 +34,25 @@ public class OrderDto {
         this.orderStatus = order.getOrderStatus();
         this.address = new AddressDto(order.getAddress());
         this.rating = order.getRating();
+
+        if (order.getCourier() != null) {
+            this.courier = new UserDto(order.getCourier());
+        }
     }
 
     public Order toEntity() {
         Order order = new Order();
-
-        if (courier != null) {
-
-            order.setCourier(courier.toEntity());
-        }
-
         order.setId(id);
         order.setCustomer(customer.toEntity());
         order.setItemList(itemList.stream().map(ItemDto::toEntity).collect(Collectors.toList()));
         order.setOrderStatus(orderStatus);
         order.setAddress(address.toEntity());
         order.setRating(rating);
-
+        if (courier != null) {
+            order.setCourier(courier.toEntity());
+        }
 
         return order;
-
     }
 
 }

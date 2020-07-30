@@ -29,8 +29,6 @@ public class UserDto {
 
     private String email;
 
-    private EntityStatus entityStatus;
-
     private UserType userType;
 
     private List<Order> orderList;
@@ -39,29 +37,28 @@ public class UserDto {
 
     public UserDto(User user) {
         this.id = user.getId();
-        if (user.getAddresses() != null){
-            this.addresses = user.getAddresses().stream().map(AddressDto::new).collect(Collectors.toList());
-        }
         this.name=user.getName();
         this.login=user.getLogin();
         this.email=user.getEmail();
-        this.entityStatus= user.getEntityStatus();
         this.userType=user.getUserType();
 
+        if (user.getAddresses() != null){
+            this.addresses = user.getAddresses().stream().map(AddressDto::new).collect(Collectors.toList());
+        }
     }
 
     public User toEntity() {
         User user = new User();
         user.setId(id);
-        if (addresses != null){
-            user.setAddresses(addresses.stream().map(AddressDto::toEntity).collect(Collectors.toList()));
-        }
         user.setName(name);
         user.setLogin(login);
         user.setEmail(email);
-        user.setEntityStatus(entityStatus);
         user.setUserType(userType);
         user.setPassword(password);
+
+        if (addresses != null){
+            user.setAddresses(addresses.stream().map(AddressDto::toEntity).collect(Collectors.toList()));
+        }
 
         return user;
     }
