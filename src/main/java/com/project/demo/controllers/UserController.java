@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/v1/auth")
-public class AuthController extends ControllerAncestor {
+public class UserController extends ControllerAncestor {
 
     @Autowired
     private UserService userService;
@@ -31,6 +31,23 @@ public class AuthController extends ControllerAncestor {
         return new ResponseEntity<>("Test is done", HttpStatus.OK);
     }
 
+    @GetMapping(value = "/activation/{username}")
+    public ResponseEntity<?> activateUser(@PathVariable String username) {
+        userService.activateUser(username);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<UserDto> login(@RequestBody UserDto userDto) {
+
+        String token = userService.login(userDto.getLogin(), userDto.getPassword());
+
+        UserDto response = new UserDto();
+
+        response.setToken(token);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 
 }

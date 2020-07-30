@@ -70,7 +70,7 @@ public class User extends EntityAncestor implements UserDetails {
 
     @Override
     public String getUsername() {
-        return getUsername();
+        return login;
     }
 
     @Override

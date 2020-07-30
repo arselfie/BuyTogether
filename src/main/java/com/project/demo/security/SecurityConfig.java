@@ -19,6 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String AUTH_ENDPOINT = "/api/v1/auth/**";
 
+    private static final String DOCS_ENDPOINT = "/";
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -33,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(AUTH_ENDPOINT).permitAll()
                 .antMatchers(API_V1).authenticated()
+                .antMatchers(DOCS_ENDPOINT).permitAll()
                 .anyRequest().denyAll()
                 .and()
                 .apply(jwtConfigurer);

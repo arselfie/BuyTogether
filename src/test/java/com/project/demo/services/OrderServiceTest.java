@@ -17,8 +17,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class OrderServiceTest {
+
+class OrderServiceTest extends ServiceTestAncestor {
 
     @Autowired
     private OrderService orderService;

@@ -1,0 +1,23 @@
+== User REST documentation
+
+[[registration]]
+
+== Registration
+
+=== Request
+
+include::{snippets}/registration/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/registration/response-fields.adoc[]
+
+=== Example
+
+==== Request
+
+include::{snippets}/registration/request-body.adoc[]
+
+==== Response
+
+include::{snippets}/registration/response-body.adoc[]
