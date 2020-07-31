@@ -3,9 +3,12 @@ package com.project.demo.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.project.demo.entity.item.Item;
 import com.project.demo.entity.item.ItemStatus;
+import lombok.Data;
 
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemDto {
+
 
     private Long id;
 
@@ -14,6 +17,9 @@ public class ItemDto {
     private String description;
 
     private ItemStatus itemStatus;
+
+    public ItemDto() {
+    }
 
     public ItemDto(Item item) {
         this.id = item.getId();

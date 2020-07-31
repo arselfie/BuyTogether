@@ -17,6 +17,8 @@ public class AddressDto {
 
     private Integer postalCode;
 
+    public AddressDto() {
+    }
 
     public AddressDto(Address address) {
         this.id = address.getId();

@@ -27,6 +27,7 @@ public class User extends EntityAncestor implements UserDetails {
     @Column(name = "USER_ID")
     private Long id;
 
+
     @OneToMany(mappedBy = "customer")
     private List<Address> addresses;
 
@@ -66,6 +67,13 @@ public class User extends EntityAncestor implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return new ArrayList<>();
+    }
+
+    public List<Address> getAddresses() {
+        if (addresses == null) {
+            addresses = new ArrayList<>();
+        }
+        return addresses;
     }
 
     @Override

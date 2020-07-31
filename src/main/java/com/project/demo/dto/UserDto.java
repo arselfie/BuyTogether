@@ -14,8 +14,6 @@ import java.util.stream.Collectors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
-    public UserDto() {
-    }
 
     private Long id;
 
@@ -34,6 +32,10 @@ public class UserDto {
     private List<Order> orderList;
 
     private String token;
+
+    public UserDto() {
+    }
+
 
     public UserDto(User user) {
         this.id = user.getId();

@@ -63,7 +63,8 @@ class UserControllerTest extends ControllerTest {
 
     @Test
     void registration() throws Exception {
-        Mockito.when(userRepository.save(any())).then(e -> {
+        Mockito.when(userRepository.save(any()))
+                .then(e -> {
             User user = e.getArgument(0, User.class);
             user.setId(1L);
             return user;
@@ -154,6 +155,8 @@ class UserControllerTest extends ControllerTest {
                 )
         ));
     }
+
+
 
 
 }

@@ -24,7 +24,7 @@ public class ControllerAncestor {
             throw new ValidationException("Token is null");
         }
 
-        String username = jwtTokenProvider.getAuthentication(token).getPrincipal().toString();
+        String username = jwtTokenProvider.getLogin(token).getFirst();
 
         if (username == null) {
             throw new ValidationException("Username is null");
@@ -32,7 +32,7 @@ public class ControllerAncestor {
 
         User user = userService.findByLogin(username);
 
-        if (user==null){
+        if (user == null) {
             throw new ValidationException("User not exist");
         }
 

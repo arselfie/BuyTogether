@@ -96,6 +96,52 @@ class UserServiceTest extends ServiceTestAncestor {
 
     }
 
+    @Test
+    void activationWhenUserIsNotExist() throws Exception {
+
+        ValidationException exception = assertThrows(ValidationException.class, () -> userService.activateUser("Dell"));
+        assertEquals("User not found in DB by login", exception.getMessage());
+
+    }
+
+    //Не работает
+    @Test
+    void activationWhenUserWasDeleted() throws Exception {
+
+        User testUser = new User();
+        testUser.setName("Arsen");
+        testUser.setLogin("Arsen12");
+        testUser.setPassword("123");
+        testUser.setEmail("ars@upce.cz");
+        testUser.setUserType(UserType.CUSTOMER);
+        testUser.setUserStatus(UserStatus.NEW);
+        testUser.setEntityStatus(EntityStatus.DELETED);
+
+        ValidationException exception = assertThrows(ValidationException.class, () -> userService.activateUser(testUser.getLogin()));
+        assertEquals("User was deleted from DB", exception.getMessage());
+
+    }
+
+    //не работает
+    @Test
+    void activationWhenUserStatusIsNotActive() throws Exception {
+
+        User testUser = new User();
+        testUser.setName("NotActive");
+        testUser.setLogin("NotActive");
+        testUser.setPassword("123");
+        testUser.setEmail("ars@upce.cz");
+        testUser.setUserType(UserType.CUSTOMER);
+        testUser.setUserStatus(UserStatus.ACTIVE);
+        testUser.setEntityStatus(EntityStatus.ACTIVE);
+
+        ValidationException exception = assertThrows(ValidationException.class, () -> userService.activateUser(testUser.getLogin()));
+        assertEquals("User already activated", exception.getMessage());
+
+    }
+
+
+
 
     @Test
     void updateUser() {

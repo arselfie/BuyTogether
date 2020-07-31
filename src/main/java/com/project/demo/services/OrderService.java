@@ -81,7 +81,6 @@ public class OrderService {
 
         commonService.validate(order);
 
-
         User customer = extractCustomer(order);
 
         order.setCustomer(customer);
@@ -160,5 +159,7 @@ public class OrderService {
         orderRepository.save(orderFromDb);
 
     }
+
+
 
 }
