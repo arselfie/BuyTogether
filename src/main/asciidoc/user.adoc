@@ -6,18 +6,54 @@
 
 === Request
 
-include::{snippets}/registration/request-fields.adoc[]
-
-=== Response
-
-include::{snippets}/registration/response-fields.adoc[]
+include::{snippets}/user/registration/request-fields.adoc[]
 
 === Example
 
 ==== Request
 
-include::{snippets}/registration/request-body.adoc[]
+include::{snippets}/user/registration/http-request.adoc[]
 
 ==== Response
 
-include::{snippets}/registration/response-body.adoc[]
+include::{snippets}/user/registration/http-response.adoc[]
+
+[[activation]]
+== Activation
+
+=== Request
+
+include::{snippets}/user/activation/path-parameters.adoc[]
+
+=== Example
+
+==== Request
+
+include::{snippets}/user/activation/http-request.adoc[]
+
+==== Response
+
+include::{snippets}/user/activation/http-response.adoc[]
+
+[[signin]]
+== Sign in
+
+=== Request
+
+include::{snippets}/user/login/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/user/login/response-fields.adoc[]
+
+=== Example
+
+==== Request
+
+include::{snippets}/user/login/http-request.adoc[]
+
+==== Response
+
+include::{snippets}/user/login/http-response.adoc[]
+
+

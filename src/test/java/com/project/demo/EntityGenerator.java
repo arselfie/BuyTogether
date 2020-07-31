@@ -1,11 +1,13 @@
 package com.project.demo;
 
+import com.project.demo.entity.EntityStatus;
 import com.project.demo.entity.address.Address;
 import com.project.demo.entity.item.Item;
 import com.project.demo.entity.item.ItemStatus;
 import com.project.demo.entity.order.Order;
 import com.project.demo.entity.order.OrderStatus;
 import com.project.demo.entity.user.User;
+import com.project.demo.entity.user.UserStatus;
 import com.project.demo.entity.user.UserType;
 
 import java.util.ArrayList;
@@ -58,7 +60,19 @@ public class EntityGenerator {
 
 
         return user;
+    }
 
+    public static User generateCustomer(){
+        User testUser = new User();
+        testUser.setName("Maks");
+        testUser.setLogin("Maksim");
+        testUser.setPassword("$2a$10$ITjRTdRw4E4n3aa2z0EWteNOavKfBZBl0dS4EkYtZiIKmcL2U9rbC");
+        testUser.setEmail("maks@upce.cz");
+        testUser.setUserType(UserType.CUSTOMER);
+        testUser.setUserStatus(UserStatus.ACTIVE);
+        testUser.setEntityStatus(EntityStatus.ACTIVE);
+        testUser.setId(1L);
+        return testUser;
     }
 
 
